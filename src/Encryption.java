@@ -5,7 +5,7 @@ import java.io.IOException;
 public class Encryption {
  private static final String charsToString = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя" +
          "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ" +
-         ".,””:-!? ";
+         ".,”:-!? ";
  static char[] chars = charsToString.toCharArray();
 
 public static void encryption(String pathFile, int offset) throws IOException {

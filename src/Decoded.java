@@ -5,7 +5,7 @@ import java.io.IOException;
     public class Decoded {
         private static final String charsToString = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя" +
                 "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ" +
-                ".,””:-!? ";
+                ".,”:-!? ";
         static char[] chars = charsToString.toCharArray();
 
         public static void decoded(String pathFile, int offset) throws IOException {
@@ -24,7 +24,7 @@ import java.io.IOException;
                 for (int j = 0; j < chars.length; j++) {
                     if (buffer[i]==chars[j]){
                         if (j-offset < 0){
-                            buffer[i] = chars[chars.length-1-j+offset-1];
+                            buffer[i] = chars[chars.length+j-offset];
                             break;}
                         else buffer[i] = chars[j - offset];
                         break;}
