@@ -17,11 +17,12 @@ public class Main {
     private static int offset;
 
     public static void main(String[] args) throws IOException {
-        setOffset(18);
+        setOffset(5);
         String pathFileEncryption = "C:\\Users\\Алексей\\Desktop\\JavaRush проект\\НужноЗашифровать.txt";
         String pathFileDecoded = "C:\\Users\\Алексей\\Desktop\\JavaRush проект\\Зашифровано.txt";
-        Encryption.encryption(pathFileEncryption, getOffset());
-        Decoded.decoded(pathFileDecoded, getOffset());
+       Encryption.encryption(pathFileEncryption, getOffset());
+       Decoded.decoded(pathFileDecoded, getOffset());
+        Bruteforce.decoded(pathFileDecoded);
     }
 }
 
