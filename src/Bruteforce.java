@@ -1,34 +1,26 @@
 import java.io.IOException;
 
 public class Bruteforce {
-
-
     public static void decoded(String pathFile) throws IOException {
-        char[] buffer = Metods.reader(pathFile);
+        Metods met = new Metods();
+        char[] buffer = met.reader(pathFile);
+        char[] buffer1;
         int offset = 0;
         String offsetText;
         boolean isExit = false;
-        while (!isExit) {
+        while(!isExit){
             isExit = true;
             offset++;
-            if (offset > Main.CHARS_CODE.length) {
-                System.out.println("Не удалось подобрать ключ методом Bruteforce");
+            if(offset>Main.CHARS_CODE.length*2)
                 break;
-            }
-            for (int i = 0; i < buffer.length; i++) {
-                for (int j = 0; j < Main.CHARS_CODE.length; j++) {
-                    if (buffer[i] == Main.CHARS_CODE[j]) {
-                        if (j - offset < 0) {
-                            buffer[i] = Main.CHARS_CODE[Main.CHARS_CODE.length + j - offset];
-                            break;
-                        } else buffer[i] = Main.CHARS_CODE[j - offset];
-                        break;
-                    }
-                }
-            }
-            for (int i = 0; i < buffer.length - 1; i++) {
-                offsetText = new String(buffer);
-                for (int j = 0; j < Main.LETTERS.length(); j += 2) {
+            if(offset<Main.CHARS_CODE.length){
+             buffer1 = met.offsetArray(buffer,offset*(-1));}
+            else  {
+                int shift = offset%Main.CHARS_CODE.length;
+                buffer1 = met.offsetArray(buffer,shift);}
+            for (int i = 0; i < buffer1.length-1; i++) {
+                offsetText = new String(buffer1);
+                for (int j = 0; j < Main.LETTERS.length()-1; j+=2) {
                     if (offsetText.regionMatches(true, i, Main.LETTERS, j, 2)) {
                         isExit = false;
                         break;
@@ -36,6 +28,11 @@ public class Bruteforce {
                 }
             }
         }
-        Metods.writer(Main.DECRYPTED_PATH_FILE_BF, buffer);
-    }
-}
+
+        if(offset>=Main.CHARS_CODE.length*2-2)
+            System.out.println("Не удалось подобрать ключ методом Brute Force");
+      else {
+            met.writer(Main.DECRYPTED_PATH_FILE_BF, buffer);
+            System.out.println("Путь к расшифрованному файлу методом BruteForce: " + Main.DECRYPTED_PATH_FILE_BF);
+        }
+    }}

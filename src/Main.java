@@ -38,11 +38,5 @@ public class Main {
         System.out.println("Ваш ключ " + offset);
         Decoded.decoded(ENCRYPTED_PATH_FILE, shift);
         System.out.println("Путь к расшифрованному файлу: " + DECRYPTED_PATH_FILE);
-        Bruteforce.decoded(DECRYPTED_PATH_FILE_BF);
-        System.out.println("Путь к расшифрованному файлу методом BruteFirce: " + DECRYPTED_PATH_FILE_BF);
-    }
-}
-
-
-
-
+        Bruteforce.decoded(ENCRYPTED_PATH_FILE);
+    }}
